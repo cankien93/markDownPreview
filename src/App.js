@@ -1,24 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-
-function App() {
+import Editor from './components/editor/Editor';
+import Preview from './components/preview/preview.component'
+const App = () => {
+  const [input, setInput] = React.useState('# This is a header\n\nAnd this is a paragraph');
+  const onChange = event => {
+    console.log('change')
+    setInput(event.target.value);
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Editor onChange={onChange} input={input}/>
+      <Preview input={input}/>
     </div>
   );
 }
